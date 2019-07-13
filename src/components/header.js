@@ -1,12 +1,25 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import styled from "styled-components"
+
+import logo from '../images/logo.png'
+
+const Logo = styled.div`
+  width: 250px;
+  height: 84px;
+  margin: 0 auto;
+  background: url(${logo});
+  background-size: 100%;
+  background-repeat: no-repeat;
+`
 
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `rebeccapurple`,
+      background: `white`,
       marginBottom: `1.45rem`,
+      borderBottom: `1px solid #ccc`
     }}
   >
     <div
@@ -24,7 +37,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          <Logo />
         </Link>
       </h1>
     </div>

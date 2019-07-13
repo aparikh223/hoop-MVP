@@ -6,11 +6,26 @@
  */
 
 import React from "react"
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 
 import Header from "./header"
 import "./layout.css"
+
+const Footer = styled.footer`
+  position: absolute;
+  bottom: 10px;
+  font-size: 13px;
+  color: black;
+  
+  a {
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,11 +50,16 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
+        <Footer>
+          <Link to="/terms/">Terms of Service</Link>
+           |
+          <Link to="/privacy/">Privacy Policy</Link>
+           |
+
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+          <a href="https://hoopsupport.com/">Hoop</a>
+        </Footer>
       </div>
     </>
   )
