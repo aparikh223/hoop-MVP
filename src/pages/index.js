@@ -68,6 +68,9 @@ const RequestForm = () => {
     console.log('company Select', companySelect.current.value)
     console.log('phone Input', phoneInput.current.value)
     console.log('whatcha wanna do?')
+
+    // Call your API here (lambda function)
+
   }
 
   return (
