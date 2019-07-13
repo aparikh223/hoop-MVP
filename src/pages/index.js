@@ -64,13 +64,23 @@ const RequestForm = () => {
   const companySelect = React.createRef()
   const phoneInput = React.createRef()
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log('company Select', companySelect.current.value)
     console.log('phone Input', phoneInput.current.value)
     console.log('whatcha wanna do?')
 
-    // Call your API here (lambda function)
+    const resp = await fetch('/.netlify/functions/start', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: phoneInput.current.value,
+        message: `We'll gladly help you with your ${companySelect.current.value} issue. What can we do for you?`
+      })
+    })
 
+    console.log('response', resp)
   }
 
   return (
