@@ -13,6 +13,7 @@
     "gatsby-plugin-sharp": "^2.2.7",
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-transformer-sharp": "^2.2.3",
+    "netlify-lambda": "^1.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -28,6 +29,8 @@
   ],
   "license": "MIT",
   "scripts": {
+    "start:lambda": "netlify-lambda serve src/functions",
+    "build:lambda": "netlify-lambda build src/functions",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
