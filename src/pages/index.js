@@ -7,7 +7,25 @@ import SEO from "../components/seo"
 
 const COMPANIES = [
   'AT&T',
-  'Comcast'
+  'Boost Mobile',
+  'Bright House',
+  'CenturyLink',
+  'Charter Communications',
+  'Comcast',
+  'Cox',
+  'Cricket Wireless',
+  'DIRECTV',
+  'Dish Network',
+  'Frontier',
+  'Mediacom',
+  'Optimum',
+  'RCN',
+  'Spectrum',
+  'Sprint',
+  'T-Mobile',
+  'Time Warner',
+  'Verizon',
+  'Xfinity'
 ]
 
 const Container = styled.div`
