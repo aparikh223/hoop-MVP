@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
-import logo from '../images/logo.png'
+import logo from '../images/hooplogo.png'
 
 const Logo = styled.div`
   width: 250px;
