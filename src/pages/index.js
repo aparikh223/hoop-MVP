@@ -36,6 +36,7 @@ const Container = styled.div`
 const HeroText = styled.h2`
   color: rgb(82, 113, 255);
   text-align: center;
+  text-shadow: 0px 6px 5px rgba(0,0,0,0.1);
 `
 
 const CompanySelect = styled.select`
@@ -56,17 +57,20 @@ const PhoneInput = styled.input`
 `
 
 const SubmitButton = styled.button`
-  background: rgb(82, 113, 255);
+  background-image: linear-gradient(to right, rgb(57, 178, 255), rgb(82, 113, 255));
   color: white;
   text-transform: uppercase;
   padding: 5px 0;
   width: 100%;
-  border-radius: 25px;
-  border: 0 none;
+  border-radius: 20px;
+  border:2px solid white;
   
   :hover {
     cursor: pointer;
-    background: darkblue;
+    background:transparent;
+    border-radius: 20px;
+    border:2px solid rgb(82, 113, 255);ackground: darkblue;
+    color:rgb(82, 113, 255);
   }
 `
 
