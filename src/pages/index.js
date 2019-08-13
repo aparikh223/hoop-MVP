@@ -98,7 +98,7 @@ const RequestForm = () => {
       },
       body: JSON.stringify({
         to: phoneInput.current.value,
-        message: `We're here to help you with your ${companySelect.current.value} issue. What can we help you with? The more detail the better`
+        message: `We're here to help you with your ${companySelect.current.value} issue. What problem are you currently experiencing? The more detail the better.`
       })
     })
 
