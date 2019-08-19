@@ -15,11 +15,10 @@ import Header from "./header"
 import "./layout.css"
 
 const Footer = styled.footer`
-  position: absolute;
   bottom: 10px;
   font-size: 13px;
   color: black;
-  
+  text-align: center;
   a {
     text-decoration: none;
     font-size: 13px;
@@ -51,14 +50,13 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <Footer>
-          <Link to="/terms/">Terms of Service</Link>
-           |
-          <Link to="/privacy/">Privacy Policy</Link>
-           |
-
-          © {new Date().getFullYear()}, Built with
+          © {new Date().getFullYear()}, Hoop Support
           {` `}
-          <a href="https://hoopsupport.com/">Hoop</a>
+          <Link to="/terms/">Terms of Service</Link> 
+          {` `}
+          &
+          {` `}
+          <Link to="/privacy/">Privacy Policy</Link>
         </Footer>
       </div>
     </>

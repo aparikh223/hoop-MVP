@@ -29,20 +29,22 @@ const COMPANIES = [
 ]
 
 const Container = styled.div`
-  max-width: 320px;
+  max-width: 580px;
   margin: 0 auto;
+  height: 70vh;
 `
 
 const HeroText = styled.h2`
   color: rgb(82, 113, 255);
   text-align: center;
-  text-shadow: 0px 6px 5px rgba(0,0,0,0.1);
+  text-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+  font-size: 30px
 `
 
 const CompanySelect = styled.select`
   background: white;
   border: 1px solid #aaa;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   padding: 10px;
 `
@@ -81,16 +83,22 @@ const SubText = styled.p`
   color: #555;
 `
 
+const FormTitle = styled.p`
+   color: #545454;
+   text-align: center;
+   font-size: 25px
+`
+
+const FormWrapper = styled.div`
+   max-width: 380px;
+   margin: 0 auto;
+`
 
 const RequestForm = () => {
   const companySelect = React.createRef()
   const phoneInput = React.createRef()
 
   const onSubmit = async () => {
-    console.log('company Select', companySelect.current.value)
-    console.log('phone Input', phoneInput.current.value)
-    console.log('whatcha wanna do?')
-
     const resp = await fetch('/.netlify/functions/start', {
       method: 'POST',
       headers: {
@@ -107,28 +115,30 @@ const RequestForm = () => {
 
   return (
     <>
-      <p>Which company do you need help with?</p>
-      <CompanySelect ref={companySelect}>
-        { COMPANIES.map((company) => (
-          <option key={company}
-                  value={company}
-          >
-            {company}
-          </option>
-        )) }
-      </CompanySelect>
-      <br />
-      <PhoneInput type={'text'}
-                  placeholder={'Your phone number'}
-                  ref={phoneInput}
-      />
-      <br />
-      <SubmitButton onClick={onSubmit}>
-        Start Resolving
-      </SubmitButton>
-      <SubText>
-        We'll send you a text to get started.
-      </SubText>
+      <FormTitle>What company can we help you with?</FormTitle>
+      <FormWrapper>
+        <CompanySelect ref={companySelect}>
+          { COMPANIES.map((company) => (
+            <option key={company}
+                    value={company}
+            >
+              {company}
+            </option>
+          )) }
+        </CompanySelect>
+        <br />
+        <PhoneInput type={'text'}
+                    placeholder={"Phone Number We'll send you a text to start the process!"}
+                    ref={phoneInput}
+        />
+        <br />
+        <SubmitButton onClick={onSubmit}>
+          Start Resolving
+        </SubmitButton>
+        <SubText>
+          We'll send you a text to get started.
+        </SubText>
+      </FormWrapper>
     </>
   )
 }
@@ -137,7 +147,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Container>
-      <HeroText>Customer service issues resolved for you.</HeroText>
+      <HeroText>Your customer service issues resolved.</HeroText>
       <RequestForm/>
     </Container>
   </Layout>
