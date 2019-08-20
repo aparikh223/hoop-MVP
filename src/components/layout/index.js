@@ -9,24 +9,15 @@ import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
 
-import Header from "./header"
+import background from '../../images/background.jpg'
+import Header from "../header"
 import "./layout.css"
 
-const Footer = styled.footer`
-  bottom: 10px;
-  font-size: 13px;
-  color: black;
-  text-align: center;
-  a {
-    text-decoration: none;
-    font-size: 13px;
-    color: black;
-  }
-`
+import {Footer, BodyWrapper, Container, ImgWrapper, Img} from './styles'
 
-const Layout = ({ children }) => {
+
+const Layout = ({ children, size }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -38,16 +29,9 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <Container>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
+      <BodyWrapper size={size}>
         <main>{children}</main>
         <Footer>
           © {new Date().getFullYear()}, Hoop Support
@@ -58,13 +42,15 @@ const Layout = ({ children }) => {
           {` `}
           <Link to="/privacy/">Privacy Policy</Link>
         </Footer>
-      </div>
-    </>
+      </BodyWrapper>
+      <ImgWrapper><Img src={background}/></ImgWrapper>
+    </Container>
   )
 }
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  size: PropTypes.number
 }
 
 export default Layout

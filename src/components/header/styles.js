@@ -4,7 +4,7 @@ import logo from '../../images/logo.png'
 
 export const Wrapper = styled.header`
     background: white;
-    margin-bottom: 1.45rem;
+    margin-bottom: 3rem;
     border-bottom: 3px solid #ccc;
     display: flex;
     justify-content: space-between;
@@ -29,5 +29,8 @@ export const MenuWrapper = styled.div`
 `
 
 export const MenuItem = styled(Link)`
-    margin: 0 10px
+    margin: 0 20px;
+    color: #a6a6a6;
+    font-size: 18px;
+    font-weight: 600;
 `
