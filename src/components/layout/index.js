@@ -14,7 +14,7 @@ import background from '../../images/background.jpg'
 import Header from "../header"
 import "./layout.css"
 
-import {Footer, BodyWrapper, Container, ImgWrapper, Img} from './styles'
+import {Footer, BodyWrapper, Container, ImgWrapper, Img, Social} from './styles'
 
 
 const Layout = ({ children, size }) => {
@@ -34,16 +34,23 @@ const Layout = ({ children, size }) => {
       <BodyWrapper size={size}>
         <main>{children}</main>
         <Footer>
+          <div>
           © {new Date().getFullYear()}, Hoop Support
           {` `}
-          <Link to="/terms/">Terms of Service</Link> 
+          <Link to="/terms/" style={{color: '#3a368f'}}>Terms of Service</Link> 
           {` `}
           &
           {` `}
-          <Link to="/privacy/">Privacy Policy</Link>
+          <Link to="/privacy/" style={{color: '#3a368f'}}>Privacy Policy</Link>
+          </div>
         </Footer>
+        <Social>
+          <a className="social" id="twit" href="#"></a>
+          <a className="social" id="fb" href="#"></a>
+          <a className="social" id="inst" href="#"></a>
+        </Social>
       </BodyWrapper>
-      <ImgWrapper><Img src={background}/></ImgWrapper>
+      {/* <ImgWrapper><Img src={background}/></ImgWrapper> */}
     </Container>
   )
 }

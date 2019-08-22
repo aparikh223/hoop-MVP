@@ -49,6 +49,29 @@ a:active,
 a:hover {
   outline-width: 0;
 }
+a.social {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-image: 
+  url(../../images/sprite.png);
+  background-size: 141px 70px;
+}
+#fb:hover{
+  background-position: 0 -107px;;
+}
+#inst {
+  background-position: -105px 0;
+}
+#inst:hover {
+  background-position: -105px -107px;
+}
+#twit {
+  background-position: -35px 0;
+}
+#twit:hover {
+  background-position: -35px -107px;
+}
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;

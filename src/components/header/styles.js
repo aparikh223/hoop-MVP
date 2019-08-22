@@ -9,6 +9,10 @@ export const Wrapper = styled.header`
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.0875rem 0;
+    @media(max-width: 650px) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 `;
 
 export const LogoWrapper = styled.div`
@@ -26,11 +30,15 @@ export const Logo = styled.div`
 export const MenuWrapper = styled.div`
     display: flex;
     align-items: center;
+    @media(max-width: 650px) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 `
 
 export const MenuItem = styled(Link)`
     margin: 0 20px;
     color: #a6a6a6;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 800;
 `

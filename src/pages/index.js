@@ -33,7 +33,10 @@ const COMPANIES = [
 const Container = styled.div`
   max-width: 580px;
   margin: 0 auto;
-  height: 70vh;
+  height: 72vh;
+  @media(max-width: 650px) {
+    margin-bottom: 40px;
+  }
 `
 
 const HeroText = styled.h2`
@@ -46,12 +49,13 @@ const HeroText = styled.h2`
 
 const PhoneInput = styled.input`
   width: 100%;
-  border: 2px solid #a6a6a6;
-  border-radius: 5px;
+  border: 4px solid #d9d9d9;
+  border-radius: 8px;
   padding: 7px 10px 5px;
   font-size: 14px;
   margin: 10px auto 20px;
   color: #a6a6a6;
+  
 `
 
 const SubmitButton = styled.button`
@@ -78,6 +82,7 @@ const SubText = styled.p`
   margin-top: 10px;
   font-size: 10px;
   color: #555;
+  opacity: 0.8;
 `
 
 const FormTitle = styled.p`
@@ -104,7 +109,6 @@ const RequestForm = () => {
   const phoneInput = React.createRef()
 
   const [selectedCountry, setCountry] = useState('Company');
-
   const onSubmit = async () => {
     const resp = await fetch('/.netlify/functions/start', {
       method: 'POST',
@@ -113,7 +117,7 @@ const RequestForm = () => {
       },
       body: JSON.stringify({
         to: phoneInput.current.value,
-        message: `We're here to help you with your ${companySelect.current.value} issue. What problem are you currently experiencing? The more detail the better.`
+        message: `We're here to help you with your ${companySelect.current.props.value} issue. What problem are you currently experiencing? The more detail the better.`
       })
     })
 
@@ -126,6 +130,7 @@ const RequestForm = () => {
       <FormWrapper>
         <Autocomplete
           getItemValue={(item) => item.label}
+          ref={companySelect}
           items={COMPANIES}
           renderItem={(item, isHighlighted) =>
             <AutocompliteItem isHighlighted={isHighlighted}>
@@ -137,8 +142,8 @@ const RequestForm = () => {
               background: 'white',
               width: '100%',
               margin: '0 auto',
-              border: '2px solid #a6a6a6',
-              borderRadius: '5px',
+              border: '4px solid #d9d9d9',
+              borderRadius: '8px',
               padding: '7px 10px 5px',
               fontSize: '14px',
               color: '#a6a6a6',
@@ -167,8 +172,8 @@ const RequestForm = () => {
         </SubmitButton>
         <SubText>
           By submitting your issue you agree to our {` `}  
-          <Link to="/terms/">Terms of Service</Link> {` `} & {` `}
-          <Link to="/privacy/">Privacy Policy</Link>
+          <Link to="/terms/" style={{color: '#3a368f'}}>Terms of Service</Link> {` `} & {` `}
+          <Link to="/privacy/" style={{color: '#3a368f'}}>Privacy Policy</Link>
         </SubText>
       </FormWrapper>
     </>
