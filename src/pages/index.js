@@ -42,8 +42,9 @@ const Container = styled.div`
 const HeroText = styled.h2`
   color: rgb(82, 113, 255);
   text-align: center;
-  text-shadow: 0px 2px 5px rgba(0,0,0,0.5);
-  font-size: 30px;
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+  font-weight: 700
+  font-size: 40px;
   margin-bottom: 3rem;
 `
 
