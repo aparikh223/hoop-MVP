@@ -90,13 +90,13 @@ const Privacy = () => (
         Yes. Hoop uses 256-bit SSL encryption on our website and encrypted databases.
         We use CloakMy, a non-profit message encryption tool, to facilitate the secure transfer of your key
         account information which then automatically gets erased. For more information on CloakMy’s encryption, please visit their Privacy Policy
-        <a href="https://cloakmy.org/privacy">here</a>
+        <a href="https://cloakmy.org/privacy"> here</a>
      </Text>
      <SubTitle>What does hoop do with my data?</SubTitle>
      <Text>
         Hoop only utilizes your data to resolve your customer service issue. We will share the necessary
         information with the specific company you have an issue with in order to represent your interests during the customer service process. We do not sell any of your data to third parties.
-        For more details please refer to our Privacy Policy here.
+        For more details please refer to our Privacy Policy <a href="https://hoopsupport.com/privacy"> here</a>.
      </Text>
      <SubTitle>How do I get in contact with hoop?</SubTitle>
      <Text>
@@ -104,7 +104,7 @@ const Privacy = () => (
      </Text>
      <SubTitle>Why the name hoop?</SubTitle>
      <Text>
-        We want to jump through all the customer service hoops so you don’t have to
+        We want to jump through all the customer service hoops so you don’t have to.
      </Text>
   
      </Container>
