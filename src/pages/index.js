@@ -27,7 +27,8 @@ const COMPANIES = [
   { label: 'T-Mobile' },
   { label: 'Time Warner' },
   { label: 'Verizon' },
-  { label: 'Xfinity' }
+  { label: 'Xfinity' },
+  { label: 'Other' }
 ]
 
 const Container = styled.div`
