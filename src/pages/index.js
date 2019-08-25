@@ -184,7 +184,7 @@ const RequestForm = () => {
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Resolve" />
     <Container>
       <HeroText>Your customer service issues resolved.</HeroText>
       <RequestForm />
