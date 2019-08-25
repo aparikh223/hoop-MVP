@@ -165,7 +165,7 @@ const RequestForm = () => {
           onSelect={(val) => setCountry(val)}
         />
         <PhoneInput type={'text'}
-          placeholder={"Phone Number We'll send you a text to start the process!"}
+          placeholder={"Mobile Number"}
           ref={phoneInput}
         />
 
