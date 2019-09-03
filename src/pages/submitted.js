@@ -69,7 +69,6 @@ class Donate extends React.Component {
     return (
       <Layout>
         <Container>
-            <SEO title="Donate" />
             <Title>Issue Submitted!</Title>
             
             
