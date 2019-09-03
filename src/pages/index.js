@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import Autocomplete from 'react-autocomplete'
 
 import Layout from "../components/layout"
@@ -9,7 +9,7 @@ import SEO from "../components/seo"
 
 const COMPANIES = [
   { label: 'AT&T' },
-  { label: 'Boost Mobile' },
+  { label: 'Boost Mobile' },  
   { label: 'Bright House' },
   { label: 'CenturyLink' },
   { label: 'Charter Communications' },
@@ -79,6 +79,7 @@ const SubmitButton = styled.button`
   }
 `
 
+
 const SubText = styled.p`
   text-align: center;
   margin-top: 10px;
@@ -123,7 +124,10 @@ const RequestForm = () => {
       })
     })
 
-    console.log('response', resp)
+    console.log('response', resp);
+
+    navigate('/submitted');
+
   }
 
   return (
@@ -172,6 +176,7 @@ const RequestForm = () => {
         <SubmitButton onClick={onSubmit}>
           Start Resolving
         </SubmitButton>
+        
         <SubText>
           By submitting your issue you agree to our {` `}  
           <Link to="/terms/" style={{color: '#3a368f'}}>Terms of Service</Link> {` `} & {` `}
