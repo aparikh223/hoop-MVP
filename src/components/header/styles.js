@@ -4,7 +4,7 @@ import logo from '../../images/logo.png'
 
 export const Wrapper = styled.header`
     background: white;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     border-bottom: 3px solid #ccc;
     display: flex;
     justify-content: space-between;
