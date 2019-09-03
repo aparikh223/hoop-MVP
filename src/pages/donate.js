@@ -1,11 +1,19 @@
 import React, {useState} from "react"
 import styled from "styled-components"
-
+import { PayPalButton } from "react-paypal-button-v2";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import cash from '../images/cash.jpg'
 import venmo from '../images/venmo.png'
-import paypal from '../images/paypal.png'
+// import paypal from '../images/paypal.png'
+
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
+
 import "./donate.css"
 
 const Container = styled.div`
@@ -94,57 +102,104 @@ const Custom = styled(Field)`
 `
 
 
-const Donate = () => {
-const [isChecked, handleCheck] = useState(false);
-return (
-  <Layout>
-    <Container>
-      <SEO title="Donate" />
-      <Title>Customer support, Supported by You</Title>
-      <SubTitle>On a scale of $1 - $10, how did we do?</SubTitle>
-      <AmountWrapper>
-        <Text style={{margin:'0', padding:'0', whiteSpace: "nowrap"}}>Tip Amount:</Text>
-        <form>
-          <Field>
-            <input id="fieldFirst" type="radio" name="field" value="$5"></input>
-            <label htmlFor="fieldFirst" onClick={() => handleCheck(false)}>$5</label>
-          </Field>
-          <Field>
-            <input id="fieldSecond" type="radio" name="field" value="$10"></input>
-            <label htmlFor="fieldSecond" onClick={() => handleCheck(false)}>$10</label>
-          </Field>
-         <Custom>
-            <input id="custom" type="radio" name="field" value="$"></input>
-            <label htmlFor="custom" onClick={() => handleCheck(!isChecked)} >$_____</label>
-            {isChecked && (
-                <input autoFocus={true} id="fieldThird" className="custom-amount" name="custom" placeholder="$"></input>
-              )
-            }
-        </Custom>
-        </form>
-      </AmountWrapper>
-      <OptionsWrapper>
-        <Text>Payment Options:</Text>
-        <ImageContainer>
-          <ImageWrapper>
-            <img src={cash}/>
-          </ImageWrapper>
-          <Label>SQUARE CASH</Label>
-        </ImageContainer>
-        <LogoWrapper>
-            <img src={venmo} style={{paddingTop: '40px'}}/>
-        </LogoWrapper>
-        <LogoWrapper>
-            <img src={paypal}/>
-        </LogoWrapper>
-        
+class Donate extends React.Component {
 
-      </OptionsWrapper>
-    </Container>
-    
-  {/* <Link to="/">Go back to the homepage</Link> */}
-  </Layout>
-)
+  constructor(props) {
+    super(props);
+    this.state = {
+      amount: 0,
+      isChecked: false,
+    };
+  }
+  setAmount = (value) => {
+    this.setState({
+      amount: value,
+    });
+  }
+
+  setCustomAmount = (e) => {
+    this.setState({amount: e.target.value});
+  } 
+
+  handleClick = () => {
+    this.setState({isChecked: true});
+  }
+
+  render(){
+
+    return (
+      <Layout>
+        <Container>
+          <SEO title="Donate" />
+          <Title>Customer support, Supported by You</Title>
+          <SubTitle>On a scale of $1 - $10, how did we do?</SubTitle>
+          <AmountWrapper>
+            <Text style={{margin:'0', padding:'0', whiteSpace: "nowrap"}}>Tip Amount:</Text>
+            <form>
+              <Field>
+                <input onClick={() => this.setAmount(5)} id="fieldFirst" type="radio" name="field" value="$5"></input>
+                <label htmlFor="fieldFirst" >$5</label>
+              </Field>
+              <Field >
+                <input onClick={() => this.setAmount(10)} id="fieldSecond" type="radio" name="field" value="$10"></input>
+                <label htmlFor="fieldSecond">$10</label>
+              </Field>
+            <Custom>
+                <input id="custom" type="radio" name="field" onClick={(e) => this.handleClick(e)} ></input>
+                <label htmlFor="custom" >$_____</label>
+                {this.state.isChecked && (
+                    <input onChange={(e)=> this.setCustomAmount(e)} autoFocus={true} id="fieldThird" className="custom-amount" name="custom" placeholder="$"></input>
+                  )
+                }
+            </Custom>
+            </form>
+            </AmountWrapper>
+            
+            <AmountWrapper>
+              <Text>Payment Options:</Text>    
+            </AmountWrapper>
+          
+                
+         <OptionsWrapper>            
+  
+            <PayPalButton
+              amount={this.state.amount}
+              onSuccess={(details, data) => {
+                alert("Transaction completed by " + details.payer.name.given_name);
+      
+                // OPTIONAL: Call your server to save the transaction
+                return fetch("/paypal-transaction-complete", {
+                  method: "post",
+                  body: JSON.stringify({
+                    orderID: data.orderID
+                  })
+                });
+              }}
+            />
+            
+            <MobileView>
+              <ImageContainer>
+                <ImageWrapper>
+                  <img src={cash}/>
+                </ImageWrapper>
+                <Label>SQUARE CASH</Label>
+              </ImageContainer>
+            
+              <LogoWrapper>
+                  <img src={venmo} style={{paddingTop: '40px'}}/>
+              </LogoWrapper>
+            </MobileView>
+            
+          </OptionsWrapper>
+          
+ 
+        </Container>
+        
+      {/* <Link to="/">Go back to the homepage</Link> */}
+      </Layout>
+    )
+  }
+
 }
 
 export default Donate
