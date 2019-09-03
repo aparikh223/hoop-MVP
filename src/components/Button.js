@@ -19,7 +19,7 @@ const ButtonContainer = styled.div`
         cursor: pointer;
         background:transparent;
         border-radius: 20px;
-        border:2px solid rgb(82, 113, 255);ackground: darkblue;
+        border:2px solid rgb(82, 113, 255);
         color:rgb(82, 113, 255);
     }
     @media(max-width: 650px) {
@@ -41,7 +41,7 @@ const SubmitButton = styled.button`
     cursor: pointer;
     background:transparent;
     border-radius: 20px;
-    border:2px solid rgb(82, 113, 255);ackground: darkblue;
+    border:2px solid rgb(82, 113, 255);
     color:rgb(82, 113, 255);
   }
 `
