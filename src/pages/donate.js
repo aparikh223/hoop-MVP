@@ -24,8 +24,10 @@ const PaypalButtonWrapper = styled.div`
   margin: 0 auto;
   width: 300px; 
   border-radius: 6px;
-  max-height: 61px;
+  max-height: 59px;
   height: auto;
+  border: 3px solid #ddd;
+
 `
 
 const SqCashButtonWrapper = styled.a`
@@ -45,8 +47,9 @@ const VenmoButtonWrapper = styled.a`
   display: block;
   border: 3px solid #ddd;
   background-color: white;
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 10px;
+  margin-bottom: 10px;
 
 `
 const Title = styled.h1`
@@ -123,7 +126,7 @@ class Donate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      amount: 0,
+      amount: 0.01,
     };
   }
 
@@ -141,6 +144,24 @@ class Donate extends React.Component {
          
             <Tagline>Select an option below to donate.</Tagline>
 
+
+            <MobileView>
+
+              <SqCashButtonWrapper className="btn-payment" href="https://cash.app/$HoopSupport" >
+                <SquareCash>
+                  <ImageWrapper>
+                    <SqCashImage src={cash}/>
+                  </ImageWrapper>
+                  <Label>SQUARE CASH</Label>
+                </SquareCash>
+              </SqCashButtonWrapper>
+
+              <VenmoButtonWrapper>
+                <VenmoImage src={venmo} />
+              </VenmoButtonWrapper>
+
+            </MobileView>
+
             <PaypalButtonWrapper>
               <PayPalButton
                 style={{
@@ -149,7 +170,7 @@ class Donate extends React.Component {
                   shape:   'rect',
                   label:   'paypal',  
                   tagline: false,
-                  height: 55,   
+                  height: 53,   
                 }}
         
                 amount={this.state.amount}
@@ -168,22 +189,6 @@ class Donate extends React.Component {
             </PaypalButtonWrapper>
             
 
-            <MobileView>
-
-              <SqCashButtonWrapper className="btn-payment" href="https://cash.app/$HoopSupport" >
-                <SquareCash>
-                  <ImageWrapper>
-                    <SqCashImage src={cash}/>
-                  </ImageWrapper>
-                  <Label>SQUARE CASH</Label>
-                </SquareCash>
-              </SqCashButtonWrapper>
-              
-              <VenmoButtonWrapper>
-                <VenmoImage src={venmo} />
-              </VenmoButtonWrapper>
-            
-            </MobileView>
             
           </OptionsWrapper>
           
