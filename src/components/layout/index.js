@@ -45,9 +45,9 @@ const Layout = ({ children, size }) => {
           </div>
         </Footer>
         <Social>
-          <a className="social" id="twit" href="#"></a>
-          <a className="social" id="fb" href="#"></a>
-          <a className="social" id="inst" href="#"></a>
+          <a className="social" target = '_blank' id="twit" href="https://twitter.com/GetHooped"></a>
+          <a className="social" target = '_blank' id="fb" href="https://www.facebook.com/GetHooped/"></a>
+          <a className="social" target = '_blank' id="inst" href="https://www.instagram.com/hoop_support/"></a>
         </Social>
       </BodyWrapper>
       {/* <ImgWrapper><Img src={background}/></ImgWrapper> */}

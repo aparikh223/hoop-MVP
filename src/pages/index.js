@@ -112,6 +112,7 @@ const RequestForm = () => {
   const phoneInput = React.createRef()
 
   const [selectedCountry, setCountry] = useState('Company');
+  
   const onSubmit = async () => {
     const resp = await fetch('/.netlify/functions/start', {
       method: 'POST',
