@@ -1,17 +1,13 @@
-import React, {useState} from "react"
+import React from "react"
 import styled from "styled-components"
 import { PayPalButton } from "react-paypal-button-v2";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import cash from '../images/cash.jpg'
 import venmo from '../images/venmo.png'
-// import paypal from '../images/paypal.png'
 
 import {
-  BrowserView,
   MobileView,
-  isBrowser,
-  isMobile
 } from "react-device-detect";
 
 import "./donate.css"
@@ -19,22 +15,43 @@ import "./donate.css"
 const Container = styled.div`
   height: 72vh;
 `
-const AmountWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 75%;
-  margin: 50px auto 30px;
-  justify-content: space-between;
-  @media(max-width: 650px) {
-    flex-wrap: wrap;
-}
+ 
+const OptionsWrapper = styled.div`
+  text-align: center;
+  width: 100%; 
 `
-const OptionsWrapper = styled(AmountWrapper)`
-  width: 85%;
-  flex-wrap: wrap;
+const PaypalButtonWrapper = styled.div`
+  margin: 0 auto;
+  width: 300px; 
+  border-radius: 6px;
+  max-height: 59px;
+  height: auto;
+  border: 3px solid #ddd;
+
 `
 
+const SqCashButtonWrapper = styled.a`
+  margin: 0 auto;
+  width: 300px; 
+  display: block;
+  border: 3px solid #ddd;
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 10px;
+
+`
+
+const VenmoButtonWrapper = styled.a`
+  margin: 0 auto;
+  width: 300px; 
+  display: block;
+  border: 3px solid #ddd;
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+`
 const Title = styled.h1`
   color: #5272ff;
   font-size: 36px;
@@ -75,55 +92,44 @@ const Label = styled(Text)`
   opacity: 0.6;
   color: black;
   font-weight: 600;
+  margin: 0 auto;
+  margin-top: 10px;
 `
-const ImageContainer = styled.div`
+const SquareCash = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
 `
-const LogoWrapper = styled(ImageWrapper)`
-  width: 220px;
-  height: 120px;
-  cursor: pointer;
-`
-const Field = styled.div`
-  width: 220px;
-  border-radius: 50px;
-  height: 80px;
-  font-size: 30px;
-  background-color: #d9d9d9;
-  @media(max-width: 650px) {
-    margin-bottom: 5px;
-  }
-`
-const Custom = styled(Field)`
-  position: relative;
+
+const Tagline = styled(Text)`
+  opacity: 0.6;
+  color: black;
+  font-size: 16px;
+  margin: 20px;
 `
 
+const VenmoImage = styled.img`
+height: 35px;
+padding: 5px;
+margin-top: 10px;
+margin-bottom: 0px;
+`
+
+const SqCashImage = styled.img`
+height: 50px;
+padding: 5px;
+`
 
 class Donate extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      amount: 0,
-      isChecked: false,
+      amount: 0.01,
     };
   }
-  setAmount = (value) => {
-    this.setState({
-      amount: value,
-    });
-  }
 
-  setCustomAmount = (e) => {
-    this.setState({amount: e.target.value});
-  } 
-
-  handleClick = () => {
-    this.setState({isChecked: true});
-  }
 
   render(){
 
@@ -133,69 +139,62 @@ class Donate extends React.Component {
           <SEO title="Donate" />
           <Title>Customer support, Supported by You</Title>
           <SubTitle>On a scale of $1 - $10, how did we do?</SubTitle>
-          <AmountWrapper>
-            <Text style={{margin:'0', padding:'0', whiteSpace: "nowrap"}}>Tip Amount:</Text>
-            <form>
-              <Field>
-                <input onClick={() => this.setAmount(5)} id="fieldFirst" type="radio" name="field" value="$5"></input>
-                <label htmlFor="fieldFirst" >$5</label>
-              </Field>
-              <Field >
-                <input onClick={() => this.setAmount(10)} id="fieldSecond" type="radio" name="field" value="$10"></input>
-                <label htmlFor="fieldSecond">$10</label>
-              </Field>
-            <Custom>
-                <input id="custom" type="radio" name="field" onClick={(e) => this.handleClick(e)} ></input>
-                <label htmlFor="custom" >$_____</label>
-                {this.state.isChecked && (
-                    <input onChange={(e)=> this.setCustomAmount(e)} autoFocus={true} id="fieldThird" className="custom-amount" name="custom" placeholder="$"></input>
-                  )
-                }
-            </Custom>
-            </form>
-            </AmountWrapper>
-            
-            <AmountWrapper>
-              <Text>Payment Options:</Text>    
-            </AmountWrapper>
-          
-                
-         <OptionsWrapper>            
-  
-            <PayPalButton
-              amount={this.state.amount}
-              onSuccess={(details, data) => {
-                alert("Transaction completed by " + details.payer.name.given_name);
-      
-                // OPTIONAL: Call your server to save the transaction
-                return fetch("/paypal-transaction-complete", {
-                  method: "post",
-                  body: JSON.stringify({
-                    orderID: data.orderID
-                  })
-                });
-              }}
-            />
-            
+              
+         <OptionsWrapper>   
+         
+            <Tagline>Select an option below to donate.</Tagline>
+
+
             <MobileView>
-              <ImageContainer>
-                <ImageWrapper>
-                  <img src={cash}/>
-                </ImageWrapper>
-                <Label>SQUARE CASH</Label>
-              </ImageContainer>
-            
-              <LogoWrapper>
-                  <img src={venmo} style={{paddingTop: '40px'}}/>
-              </LogoWrapper>
+
+              <SqCashButtonWrapper className="btn-payment" href="https://cash.app/$HoopSupport" >
+                <SquareCash>
+                  <ImageWrapper>
+                    <SqCashImage src={cash}/>
+                  </ImageWrapper>
+                  <Label>SQUARE CASH</Label>
+                </SquareCash>
+              </SqCashButtonWrapper>
+
+              <VenmoButtonWrapper>
+                <VenmoImage src={venmo} />
+              </VenmoButtonWrapper>
+
             </MobileView>
+
+            <PaypalButtonWrapper>
+              <PayPalButton
+                style={{
+                  layout: 'horizontal',
+                  color:   'white',
+                  shape:   'rect',
+                  label:   'paypal',  
+                  tagline: false,
+                  height: 53,   
+                }}
+        
+                amount={this.state.amount}
+                onSuccess={(details, data) => {
+                  alert("Transaction completed by " + details.payer.name.given_name);
+        
+                  // OPTIONAL: Call your server to save the transaction
+                  return fetch("/paypal-transaction-complete", {
+                    method: "post",
+                    body: JSON.stringify({
+                      orderID: data.orderID
+                    })
+                  });
+                }}
+              />
+            </PaypalButtonWrapper>
+            
+
             
           </OptionsWrapper>
           
  
         </Container>
         
-      {/* <Link to="/">Go back to the homepage</Link> */}
       </Layout>
     )
   }

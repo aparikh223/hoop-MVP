@@ -44,3 +44,13 @@ input[type='radio'] {
         margin-bottom: 10px;
     }
 }
+
+.paypal-button.paypal-button-color-white {
+    background-color: #fff;
+    color: #2C2E2F;
+    border: 4px solid #ddd !important;
+}
+
+.btn-payment{
+    border: '3px solid red'
+}

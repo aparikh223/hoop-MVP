@@ -5,6 +5,10 @@ import React from "react"
 import {Wrapper, Logo, LogoWrapper, MenuWrapper, MenuItem} from './styles'
 
 
+export const activeStyle = {
+  color:"rgb(84, 84, 84)"
+}
+
 const Header = ({ siteTitle }) => (
   <Wrapper>
     <LogoWrapper>
@@ -21,9 +25,9 @@ const Header = ({ siteTitle }) => (
       </h1>
     </LogoWrapper>
     <MenuWrapper >
-        <MenuItem to="/faq">FAQ</MenuItem>
-        <MenuItem to="/privacy">Privacy</MenuItem>
-        <MenuItem to="/donate">Donate</MenuItem>
+        <MenuItem to="/faq"  activeClassName="active"  activeStyle={activeStyle} >FAQ</MenuItem>
+        <MenuItem to="/privacy" activeClassName="active"  activeStyle={activeStyle} >Privacy</MenuItem>
+        <MenuItem to="/donate" activeClassName="active"  activeStyle={activeStyle} >Donate</MenuItem>
     </MenuWrapper>
   </Wrapper>
 )

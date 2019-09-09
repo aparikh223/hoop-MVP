@@ -5,10 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React , { useRef, useLayoutEffect }  from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+
+import { StyleSheetManager } from "styled-components";
 
 import background from '../../images/background.jpg'
 import Header from "../header"
@@ -28,7 +30,15 @@ const Layout = ({ children, size }) => {
     }
   `)
 
-  return (
+  const iframeRef = useRef(null);
+	useLayoutEffect(() => {
+		const iframe = document.querySelector('#___gatsby iframe');
+		const iframeHeadElem = iframe && iframe.contentDocument.head;
+		iframeRef.current = iframeHeadElem;
+  });
+  
+
+  const WithPreviewContext = ({children}) =>    
     <Container>
       <Header siteTitle={data.site.siteMetadata.title} />
       <BodyWrapper size={size}>
@@ -45,14 +55,24 @@ const Layout = ({ children, size }) => {
           </div>
         </Footer>
         <Social>
-          <a className="social" id="twit" href="#"></a>
-          <a className="social" id="fb" href="#"></a>
-          <a className="social" id="inst" href="#"></a>
+          <a className="social" target = '_blank' id="twit" href="https://twitter.com/GetHooped"></a>
+          <a className="social" target = '_blank' id="fb" href="https://www.facebook.com/GetHooped/"></a>
+          <a className="social" target = '_blank' id="inst" href="https://www.instagram.com/hoop_support/"></a>
         </Social>
       </BodyWrapper>
       {/* <ImgWrapper><Img src={background}/></ImgWrapper> */}
     </Container>
-  )
+
+  
+  return iframeRef && iframeRef.current ?
+		<StyleSheetManager target={iframeRef.current}>
+			<WithPreviewContext>
+				{children}
+			</WithPreviewContext>
+		</StyleSheetManager> :
+		<WithPreviewContext>
+			{children}
+		</WithPreviewContext>;
 }
 
 Layout.propTypes = {

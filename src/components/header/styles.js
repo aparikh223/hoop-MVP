@@ -16,7 +16,10 @@ export const Wrapper = styled.header`
 `;
 
 export const LogoWrapper = styled.div`
-    
+@media(max-width: 650px) {
+    flex-wrap: wrap;
+    justify-content: center;
+}
 `
 
 export const Logo = styled.div`
@@ -26,6 +29,10 @@ export const Logo = styled.div`
   background: url(${logo});
   background-size: contain;
   background-repeat: no-repeat;
+  @media(max-width: 650px) {
+    width: 150px;
+    height: 64px;
+}
 `
 export const MenuWrapper = styled.div`
     display: flex;
@@ -41,4 +48,12 @@ export const MenuItem = styled(Link)`
     color: #a6a6a6;
     font-size: 24px;
     font-weight: 800;
+    @media(max-width: 650px) {
+        font-size: 18px;
+    }
+
+    :hover {
+        cursor: pointer;
+        color:rgb(84, 84, 84)
+    }
 `
