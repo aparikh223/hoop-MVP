@@ -147,7 +147,7 @@ class Donate extends React.Component {
 
             <MobileView>
 
-              <SqCashButtonWrapper className="btn-payment" href="https://cash.app/$HoopSupport" >
+              <SqCashButtonWrapper className="btn-payment" href="https://cash.app/$HoopSupport">
                 <SquareCash>
                   <ImageWrapper>
                     <SqCashImage src={cash}/>
@@ -156,8 +156,9 @@ class Donate extends React.Component {
                 </SquareCash>
               </SqCashButtonWrapper>
 
-              <VenmoButtonWrapper>
-                <VenmoImage src={venmo} />
+              <VenmoButtonWrapper className="btn-payment" href="venmo://home">
+                <VenmoImage src={venmo}/>
+                <Label>VENMO</Label>
               </VenmoButtonWrapper>
 
             </MobileView>
