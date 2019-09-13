@@ -110,7 +110,7 @@ const AutocompliteItem = styled.div`
 const RequestForm = () => {
   const companySelect = React.createRef()
   const phoneInput = React.createRef() 
-
+  
   const [selectedCountry, setCountry] = useState('Company');
   
   const onSubmit = async () => {
@@ -123,13 +123,8 @@ const RequestForm = () => {
         to: phoneInput.current.value,
         message: `We're here to help you with your ${companySelect.current.props.value} issue. What problem are you currently experiencing? The more detail the better.`
       })
+    })  
       
-      body: JSON.stringify({
-        to: 6282808826,
-        message: `${phoneInput.current.props.value} needs your help with their ${companySelect.current.props.value} issue.`
-      })
-    })
-
     
     
     console.log('response', resp);
