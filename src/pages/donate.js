@@ -156,9 +156,8 @@ class Donate extends React.Component {
                 </SquareCash>
               </SqCashButtonWrapper>
 
-              <VenmoButtonWrapper className="btn-payment" href="venmo://home">
+              <VenmoButtonWrapper href="venmo://home">
                 <VenmoImage src={venmo}/>
-                <Label>VENMO</Label>
               </VenmoButtonWrapper>
 
             </MobileView>

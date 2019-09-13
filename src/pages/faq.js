@@ -50,7 +50,7 @@ const Privacy = () => (
   <Layout size={14}>
       <Container>
     <SEO title="FAQ" />
-    <Title>Frequently asked questions</Title>
+    <Title>Frequently Asked Questions</Title>
   
     <SubTitle>Hoop’s mission is to bring customers peace of mind.</SubTitle>
     <Text> To do that we aim to build trust across the
@@ -73,7 +73,8 @@ const Privacy = () => (
      <SubTitle>Can hoop resolve issues for other companies not included on the homepage?</SubTitle>
      <Text>
         Hoop primarily focuses on cable, mobile, or internet service providers, but if you have an issue 
-        with a different business send us a text message and we’ll see what we can do to remedy the situation
+        with a different business send us a text message and we’ll see what we can do to remedy the situation.
+        Right now we only deal with companies based in the United States. 
      </Text>
      <SubTitle>Can hoop guarantee results?</SubTitle>
      <Text>
