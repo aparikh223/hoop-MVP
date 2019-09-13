@@ -110,7 +110,6 @@ const AutocompliteItem = styled.div`
 const RequestForm = () => {
   const companySelect = React.createRef()
   const phoneInput = React.createRef() 
-  const alertHoop = 6282808826
   
   const [selectedCountry, setCountry] = useState('Company');
   
@@ -123,17 +122,6 @@ const RequestForm = () => {
       body: JSON.stringify({
         to: phoneInput.current.value,
         message: `We're here to help you with your ${companySelect.current.props.value} issue. What problem are you currently experiencing? The more detail the better.`
-      })
-    })
-
-    const resp = await fetch('/.netlify/functions/start', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        to: alertHoop,
-        message: `${phoneInput.current.props.value} needs your help with their ${companySelect.current.props.value} issue.`
       })
     })  
       
