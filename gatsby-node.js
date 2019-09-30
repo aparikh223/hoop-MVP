@@ -1,7 +1,18 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+// Add Babel plugin
+try {
+  require.resolve(`babel-plugin-styled-components`)
+} catch (e) {
+  throw new Error(
+    `'babel-plugin-styled-components' is not installed which is needed by plugin 'gatsby-plugin-styled-components'`
+  )
+}
 
-// You can delete this file if you're not using it
+exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
+  const ssr = stage === `build-html` || stage === `build-javascript`
+
+  actions.setBabelPlugin({
+    name: `babel-plugin-styled-components`,
+    stage,
+    options: { ...pluginOptions, ssr },
+  })
+}
